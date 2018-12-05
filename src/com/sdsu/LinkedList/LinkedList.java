@@ -1,7 +1,5 @@
 package com.sdsu.LinkedList;
 
-import javax.sound.midi.Soundbank;
-
 public class LinkedList {
 
   private  Node head;
@@ -21,20 +19,47 @@ public class LinkedList {
 
             LinkedList linkedList = new LinkedList();
             linkedList.head = new Node(1);
-            Node newNode = new Node(0);
-            Node node3 = new Node(3);
+            Node node1 = new Node(3);
             Node node2 = new Node(2);
+            Node node3 = new Node(2);
+            Node node4 = new Node(2);
+            Node node5 = new Node(2);
+            Node node6 = new Node(2);
 
-            newNode.next = linkedList.head;
-            linkedList.head.next = node2;
+            linkedList.head.next = node1;
+            node1.next = node2;
             node2.next = node3;
+            node3.next = node4;
+            node4.next = node5;
+            node5.next = node6;
+           // node6.next = node3;
+
+            Node middleNode = linkedList.findMiddle();
+            System.out.println("Middle node is - " + middleNode.data);
 
 
-            if(linkedList.findNode(10)) {
+
+
+            //newNode.next = linkedList.head;
+
+
+
+
+
+          /*  if(linkedList.findNode(10)) {
                 System.out.println("Search Key found !!!");
             } else {
                 System.out.println("Search Key not found !!!");
             }
+*/
+           /* if(linkedList.findLoop()) {
+                System.out.println("Loop found !!!");
+            } else {
+                System.out.println(" loop not found !!!");
+            }*/
+
+
+
 
          /*   boolean isPresent = false;
             if (isPresent = true)
@@ -51,7 +76,7 @@ public class LinkedList {
             linkedList.insertLast(1);*/
 
 
-            linkedList.display();  //print linkedlist
+           // linkedList.display();  //print linkedlist
             //linkedList.length();
             //linkedList.insertFirst(); // insert node first*/
         }
@@ -135,5 +160,54 @@ public class LinkedList {
     }
 
 
+    public   boolean findLoop() {
 
+        if (head == null) {
+            return false;
+        }
+
+        Node fastPointer = head;
+        Node slowPointer = head;
+
+        while (fastPointer.next != null && slowPointer.next != null)
+        {
+            slowPointer = slowPointer.next;
+            fastPointer = fastPointer.next.next;
+            if (slowPointer == fastPointer)
+            {
+               return  true;
+            }
+
+        }
+
+        return false;
     }
+
+
+
+    public   Node findMiddle() {
+
+            if(head == null) {
+                return null;
+            }
+
+        Node fastPointer = head;
+        Node slowPointer = head;
+
+        while (fastPointer.next != null && slowPointer.next != null)
+        {
+            slowPointer = slowPointer.next;
+            fastPointer = fastPointer.next.next;
+           // if (slowPointer == fastPointer)
+           // {
+                System.out.println(slowPointer.data);
+                return  slowPointer;
+            //}
+
+        }
+
+        return null;
+    }
+
+
+}
