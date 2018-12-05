@@ -20,17 +20,35 @@ public class LinkedList {
         public static void main(String[] args) {
 
             LinkedList linkedList = new LinkedList();
-           /* linkedList.head = new Node(1);
+            linkedList.head = new Node(1);
             Node newNode = new Node(0);
             Node node3 = new Node(3);
             Node node2 = new Node(2);
 
             newNode.next = linkedList.head;
             linkedList.head.next = node2;
-            node2.next = node3;*/
-            linkedList.insertLast(11);
+            node2.next = node3;
+
+
+            if(linkedList.findNode(10)) {
+                System.out.println("Search Key found !!!");
+            } else {
+                System.out.println("Search Key not found !!!");
+            }
+
+         /*   boolean isPresent = false;
+            if (isPresent = true)
+            {
+                isPresent = linkedList.findNode(10);
+                System.out.println("value found "+isPresent);
+            }
+           else
+            {
+                System.out.println("Not present");
+            }*/
+          /*  linkedList.insertLast(11);
             linkedList.insertLast(8);
-            linkedList.insertLast(1);
+            linkedList.insertLast(1);*/
 
 
             linkedList.display();  //print linkedlist
@@ -60,6 +78,8 @@ public class LinkedList {
         System.out.println(count);
 
     }
+
+
 
     public   void insertFirst() {
          Node firstNode = new Node(0);
@@ -95,6 +115,24 @@ public class LinkedList {
 
     }
 
+
+    public   boolean findNode(int value) {
+
+        if (head == null) {
+            return false;
+        }
+
+        Node current =  head;
+        while (current.next != null) {
+            if(current.data == value)
+            {
+                return true;
+            }
+            current = current.next;
+        }
+
+        return false;
+    }
 
 
 
